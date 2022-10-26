@@ -10,73 +10,21 @@
       
       <ul class="navbar-nav sidebarList">
 
-        <li class="nav-item" routerLinkActive="active" >
-          <a class="nav-link" routerLink="/employees"><i class="fa-solid fa-briefcase me-3"></i>Empleados</a>
-        </li>
-
-        <li class="nav-item" routerLinkActive="active" >
-          <a class="nav-link" routerLink="/departments"><i class="fa-solid fa-building me-3"></i>Departamentos</a>
-        </li>
-
-     
-
-        <li class="mb-1" >
-          <a class=" nav-link d-inline-flex align-items-center rounded border-0 collapsed" 
-              data-bs-toggle="collapse" style="cursor: pointer;"
-              data-bs-target="#messages-collapse" aria-expanded="false">
-            <i class="fa-solid fa-message me-3"></i>Mensajes
-          </a>
-          <div class="collapse" id="messages-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li routerLinkActive="active"><a routerLink="/messages/personal" class="nav-link d-inline-flex text-decoration-none rounded">Personales</a></li>
-              <li routerLinkActive="active"><a routerLink="/messages/general" class="nav-link d-inline-flex text-decoration-none rounded">Generales</a></li>
-            </ul>
-          </div>
-        </li>
-
-
-
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/periods"><i class="fa-solid fa-calendar me-3"></i>Periodos</a>
-        </li>
-
-        <li class="nav-item" routerLinkActive="active" >
-          <a class="nav-link" routerLink="/schedules"><i class="fa-solid fa-calendar-days me-3"></i>Horarios</a>
-        </li>
-
-
-        <li class="nav-item" routerLinkActive="active" >
-          <a class="nav-link" routerLink="/nonworkingdays"><i class="fa-solid fa-umbrella-beach me-3"></i>Días inhábiles</a>
-        </li>
-
-
-        <li class="mb-1">
-          <a class=" nav-link d-inline-flex align-items-center rounded border-0 collapsed" 
-              data-bs-toggle="collapse" style="cursor: pointer;"
-              data-bs-target="#workpermits-collapse" aria-expanded="false">
-            <i class="fa-solid fa-book me-3"></i>Permisos
-          </a>
-          <div class="collapse" id="workpermits-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li routerLinkActive="active"><a routerLink="/workpermits/list" class="nav-link d-inline-flex text-decoration-none rounded">Catálogo</a></li>
-              <li routerLinkActive="active"><a routerLink="/workpermits/assign" class="nav-link d-inline-flex text-decoration-none rounded">Asignación de permisos</a></li>
-            </ul>
-          </div>
-        </li>
-
-
-
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/stations"><i class="fa-solid fa-fingerprint me-3"></i>Checadores</a>
-        </li>
-
-
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Análisis Clientes
+          </label>
+        </div>
 
         <hr>
 
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/help"><i class="fa-solid fa-circle-question me-3"></i>Ayuda</a>
-        </li>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheck2">
+          <label class="form-check-label" for="flexCheck2">
+            Competidores
+          </label>
+        </div>
 
         
       </ul>
