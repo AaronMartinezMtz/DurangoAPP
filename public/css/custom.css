@@ -12525,10 +12525,6 @@ nav {
   height: var(--navbar-height) !important;
 }
 
-.barsContainer {
-  width: var(--offcanvas-width) !important;
-}
-
 main {
   margin-top: var(--navbar-height);
 }

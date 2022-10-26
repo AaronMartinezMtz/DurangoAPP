@@ -6,6 +6,6 @@ html, body {
   
   .map {
     height:100%;
-    position: initial !important;
-    overflow: auto !important;
+    /* position: initial !important;
+    overflow: auto !important; */
   }
