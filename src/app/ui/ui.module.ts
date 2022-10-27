@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { BarsContainerComponent } from './bars-container/bars-container.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -13,7 +14,8 @@ import { BarsContainerComponent } from './bars-container/bars-container.componen
     BarsContainerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgChartsModule
   ],
   exports: [
     NavbarComponent,

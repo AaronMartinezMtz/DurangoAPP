@@ -1,4 +1,27 @@
 
- <div style="width: 10%;">
-    <p>Hola mundo</p>
-</div>
+    <ng-container *ngIf="graficas.length > 0">
+
+        <div class="card text-center m-2">
+            <h5>Popularidad</h5>
+            <h6>75% en la zona</h6>
+        </div>
+
+        
+        <div *ngFor="let item of graficas">
+            
+            <h5 class="text-center">{{ item.title }}</h5>
+            <div>
+                <div>
+                    <div class="chart" style="width: 250px;">
+                        <canvas baseChart
+                        [data]="item.grafica"
+                        [type]="'pie'"
+                        [options]="pieChartOptions"
+                        [plugins]="pieChartPlugins">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+        

@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Location } from 'src/interfaces/LindeLocation.interface';
+import { LocationsLindeService } from 'src/service/locations-linde.service';
+import { MapServiceService } from 'src/service/map-service.service';
 
 @Component({
   selector: 'app-mapa',
@@ -10,9 +13,13 @@ export class MapaComponent implements OnInit, AfterViewInit {
   @ViewChild("map", { static: true }) mapelemet!: any;
 
   map:any
+  locations: Location[]= []
 
 
-  constructor() { }
+  constructor(
+    private locationLinde: LocationsLindeService,
+    private mapsService: MapServiceService,
+  ) { }
   
   ngOnInit(): void {
 
@@ -27,58 +34,24 @@ export class MapaComponent implements OnInit, AfterViewInit {
         mapProperties
       );
 
+
+      this.LocationLindeInit()
       
 
   }
 
   
   ngAfterViewInit(): void {
-      this.addToMap()
+      this.addToMap();
+      this.addMapaCalor();
     
   }
 
   addToMap() {
 
 
-    new google.maps.Marker(
-      {
-        position:  { lat: 25.698286, lng: -100.310347 },
-        map: this.map,
-        title: "Linde Gases & Más Cetrika",
-        icon: "https://img.icons8.com/cotton/344/30/online-store.png"
-        
-      }
-    )
+    
 
-    new google.maps.Marker(
-      {
-        position:  { lat: 25.689932, lng: -100.268548 },
-        map: this.map,
-        title: "Linde Gases & Más Churubusco",
-        icon: "https://img.icons8.com/cotton/344/30/online-store.png"
-        
-      }
-    )
-
-    new google.maps.Marker(
-      {
-        position:  { lat: 25.675031, lng: -100.207202 },
-        map: this.map,
-        title: "Linde Gases & Más Guadalupe",
-        icon: "https://img.icons8.com/cotton/344/30/online-store.png"
-        
-      }
-    )
-
-    new google.maps.Marker(
-      {
-        position:  { lat: 25.779887, lng: -100.292432 },
-        map: this.map,
-        title: "Linde Gases & Más Escobedo",
-        icon: "https://img.icons8.com/cotton/344/30/online-store.png"
-        
-      }
-    )
   
     const coordsOne= [
 
@@ -196,6 +169,69 @@ export class MapaComponent implements OnInit, AfterViewInit {
       three.setMap(this.map)
       four.setMap(this.map)
   }
+
+
+      addMapaCalor() {
+
+        this.mapsService.getCoords()
+        .subscribe( (resp: any) => {
+          console.log("---->");
+          console.log(resp);
+          
+          const customers = resp['customers'];
+
+          let heatmapData: any = [];
+        
+          customers.forEach( (c: any) => {
+            heatmapData.push(new google.maps.LatLng( c.lat, c.lng),)
+          });
+
+          const heatmap = new google.maps.visualization.HeatmapLayer({
+            data: heatmapData
+          });
+
+        
+          heatmap.setMap(this.map);
+          
+        })
+
+      }
+
+
+
+    LocationLindeInit(){
+
+      this.locationLinde.getLocations().subscribe(
+        resp=>{
+
+          this.locations =  resp.locations
+          
+          console.log(this.locations);
+          
+
+          this.locations.forEach(element => {
+
+
+            console.log(element);
+            
+
+            new google.maps.Marker(
+              {
+                position:  { lat: +element.lat, lng: +element.lng },
+                map: this.map,
+                title: element.Name,
+                icon: element.icon
+                
+              }
+            )
+    
+            
+          });
+
+        }
+    )
+
+    }
 
 
   }
