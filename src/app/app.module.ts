@@ -10,13 +10,15 @@ import { MapaCompetidoresComponent } from './mapaCompetidores/mapaCompetidores.c
 import { UiModule } from './ui/ui.module';
 import { MapaConsiderarComponent } from './mapa-considerar/mapa-considerar.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SugerenciasComponent } from './sugerencias/sugerencias.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapaComponent,
     MapaCompetidoresComponent,
-    MapaConsiderarComponent
+    MapaConsiderarComponent,
+    SugerenciasComponent
   ],
   imports: [
     BrowserModule,

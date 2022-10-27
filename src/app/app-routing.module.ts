@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MapaConsiderarComponent } from './mapa-considerar/mapa-considerar.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { MapaCompetidoresComponent } from './mapaCompetidores/mapaCompetidores.component';
+import { SugerenciasComponent } from './sugerencias/sugerencias.component';
 
 const routes: Routes = [
   
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: 'schools',
     component: MapaConsiderarComponent
 
+  },
+  {
+    path: 'sugerencias',
+    component: SugerenciasComponent
   },
   {
     path: '**',
