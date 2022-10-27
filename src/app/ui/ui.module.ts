@@ -5,6 +5,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { BarsContainerComponent } from './bars-container/bars-container.component';
 import { NgChartsModule } from 'ng2-charts';
 
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NgChartsModule } from 'ng2-charts';
   ],
   imports: [
     CommonModule,
-    NgChartsModule
+    NgChartsModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,

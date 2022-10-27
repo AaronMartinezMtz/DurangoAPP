@@ -6,21 +6,23 @@
         <div #map class="map"></div>
     </div>
     
-    <div>
+    <div class="m-4">
+
+        <h5>Filtros</h5>
        
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Escuelas</label>
+            <input (change)="change( $event, 1)" checked class="form-check-input" type="checkbox" role="switch" id="flexSwitch">
+            <label class="form-check-label" for="flexSwitch">Escuelas</label>
         </div>
 
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Parques</label>
+            <input (change)="change( $event, 2)" checked class="form-check-input" type="checkbox" role="switch" id="flexSwitch2">
+            <label class="form-check-label" for="flexSwitch2">Parques</label>
         </div>
 
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Plazas</label>
+            <input (change)="change( $event, 3)" checked class="form-check-input" type="checkbox" role="switch" id="flexSwitch3">
+            <label class="form-check-label" for="flexSwitch3">Plazas</label>
           </div>
 
 

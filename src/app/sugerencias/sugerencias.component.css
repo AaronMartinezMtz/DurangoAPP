@@ -9,3 +9,8 @@ html, body {
     /* position: initial !important;
     overflow: auto !important; */
   }
+
+
+  .text-secondary {
+    color: orange !important;
+  }
