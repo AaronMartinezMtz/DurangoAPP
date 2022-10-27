@@ -14,9 +14,9 @@ export class BarsContainerComponent implements OnInit {
   constructor( private mapsServices: MapServiceService ){}
   
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
- 
 
-  public graficas: any = [];
+  @Input() graficas: any = [];
+  @Input() popularidad: any = [];
 
   
 
@@ -41,7 +41,7 @@ export class BarsContainerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.graficas = this.mapsServices.graficas;
+    // this.graficas = this.mapsServices.graficas;
   }
 
 

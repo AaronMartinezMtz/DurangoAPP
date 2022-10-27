@@ -13,9 +13,9 @@ export class MapaConsiderarComponent implements OnInit {
 
   @ViewChild("map", { static: true }) mapelemet!: any;
 
-  schools: School[] = []
-  parks: Park[] = []
-  malls: Mall[] = []
+  schools: any[] = []
+  parks: any[] = []
+  malls: any[] = []
 
   map:any
 
@@ -57,109 +57,119 @@ export class MapaConsiderarComponent implements OnInit {
 
     LocationSchoolInit (){
 
+
       this.locationConsiderar.getLocationsSchools().subscribe(
           resp=>{
 
-            this.schools =  resp.schools
-            
-            console.log(this.schools);
-            
+            for(var i = 0; i < resp.schools.length; i ++) {
 
-            this.schools.forEach(element => {
-
-
-              console.log(element);
-              
-
-              new google.maps.Marker(
-                {
-                  position:  { lat: +element.lat, lng: +element.lng },
+                var marker = new google.maps.Marker({
+                  position: {lat: +resp.schools[i].lat, lng: +resp.schools[i].lng},
+                  icon: resp.schools[i].icon,
                   map: this.map,
-                  title: element.name,
-                  icon: element.icon
-                  
-                }
-              )
-      
-              
-            });
+                  title: resp.schools[i].name
+                });
+                marker.addListener('click', function() {
+                    console.log(marker)
+                });
+                this.schools.push(marker);
+            }
+
 
           }
       )
 
-      }
+    }
 
 
       LocationParksInit (){
 
+
         this.locationConsiderar.getLocationsParks().subscribe(
+          resp=>{
+
+            for(var i = 0; i < resp.parks.length; i ++) {
+
+                var marker = new google.maps.Marker({
+                    position: {lat: +resp.parks[i].lat, lng: +resp.parks[i].lng},
+                    icon: resp.parks[i].icon,
+                    map: this.map,
+                    title: resp.parks[i].name
+                });
+                marker.addListener('click', function() {
+                    console.log(marker)
+                });
+                this.parks.push(marker);
+            }
+
+
+          }
+      )
+  
+    }
+
+
+
+    LocationMallsInit (){
+
+          this.locationConsiderar.getLocationsMalls().subscribe(
             resp=>{
   
-              this.parks =  resp.parks
-              
-              console.log(this.parks);
-              
+              for(var i = 0; i < resp.malls.length; i ++) {
   
-              this.parks.forEach(element => {
+                  var marker = new google.maps.Marker({
+                      position: {lat: +resp.malls[i].lat, lng: +resp.malls[i].lng},
+                      icon: resp.malls[i].icon,
+                      map: this.map,
+                      title: resp.malls[i].name
+                  });
+                  marker.addListener('click', function() {
+                      console.log(marker)
+                  });
+                  this.malls.push(marker);
+              }
   
-  
-                console.log(element);
-                
-  
-                new google.maps.Marker(
-                  {
-                    position:  { lat: +element.lat, lng: +element.lng },
-                    map: this.map,
-                    title: element.name,
-                    icon: element.icon
-                    
-                  }
-                )
-        
-                
-              });
   
             }
         )
-  
-        }
+
+    
+    }
 
 
 
-        LocationMallsInit (){
+          change( event: any, id: number ) {
 
-          this.locationConsiderar.getLocationsMalls().subscribe(
-              resp=>{
-    
-                this.malls =  resp.malls
-                
-                console.log(this.malls);
-                
-    
-                this.malls.forEach(element => {
-    
-    
-                  console.log(element);
-                  
-    
-                  new google.maps.Marker(
-                    {
-                      position:  { lat: +element.lat, lng: +element.lng },
-                      map: this.map,
-                      title: element.name,
-                      icon: element.icon
-                      
-                    }
-                  )
-          
-                  
-                });
-    
-              }
-          )
-    
+            switch( id ) {
+
+              case 1:
+                if ( event.target.checked ) {
+                  this.LocationSchoolInit();
+                } else {
+                  this.setMapOnAll(null, this.schools)
+                }
+                return;
+
+              case 2:
+                if ( event.target.checked ) {
+                  this.LocationParksInit();
+                } else {
+                  this.setMapOnAll(null, this.parks)
+                }
+                return;
+
+              case 3:
+                if ( event.target.checked ) {
+                  this.LocationMallsInit();
+                } else {
+                  this.setMapOnAll(null, this.malls)
+                }
+                return;
+
+              default:
+                return ;
+
+            }
           }
-
-
 
   }

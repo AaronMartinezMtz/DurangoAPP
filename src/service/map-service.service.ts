@@ -6,28 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class MapServiceService {
 
-  graficas: any = [
-    {
-      grafica: {
-        labels: [ 'Personas Fisicas', 'Empresas Grandes', 'Empresas pequeñas' ],
-        datasets: [ {
-          data: [ 600, 300, 100 ]
-        } ]
-      },
-      title: 'Clientes'
-    },
-    {
-      grafica: {
-        labels: [ 'Personas Fisicas', 'Empresas Grandes', 'Empresas pequeñas' ],
-        datasets: [ {
-          data: [ 600, 300, 100 ]
-        } ]
-      },
-      title: 'Clientes'
-    },
-  ]
-
-
 
   constructor(
     private http: HttpClient
@@ -37,5 +15,20 @@ export class MapServiceService {
     return this.http.get(`http://10.19.40.59:3000/api/customers/500`);
   }
 
+
+  test( coords: any ) {
+    return this.http.post(`http://10.19.40.59:3000/api/simulation`, coords );
+  }
+
+
+
+  distribuidores() {
+    return this.http.get(`http://10.19.40.59:3000/api/distros`)
+  }
+
+
+  sugerencias() {
+    return this.http.get(`http://10.19.40.59:3000/api/simulation` );
+  }
 
 }

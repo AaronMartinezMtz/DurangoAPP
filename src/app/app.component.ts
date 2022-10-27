@@ -9,7 +9,7 @@ import { SocketService } from 'src/service/socket.service';
 export class AppComponent  implements OnInit {
   title = 'Durango';
 
-  constructor( private socketService: SocketService ){}
+  constructor( private socketService: SocketService, ){}
 
   ngOnInit(): void {
     this.socketService.connect()
